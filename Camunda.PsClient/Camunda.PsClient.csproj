@@ -17,8 +17,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="doob.Camunda.Client" Version="1.1.0" />
+    <PackageReference Include="doob.Camunda.Client" Version="1.5.0" />
     <PackageReference Include="PowerShellStandard.Library" Version="3.0.0-preview-01" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Camunda.PsClient.psd1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
