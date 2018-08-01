@@ -15,7 +15,7 @@ Camunda Client for PowerShell Core
 |Get List Count       |:heavy_check_mark:|`Get-CamundaDeployment -Count`|
 |Get                  |:heavy_check_mark:|`Get-CamundaDeployment`|
 |Create               |:heavy_check_mark:|`New-CamundaDeployment`|
-|Redeploy             |:white_circle:|:white_circle:|
+|Redeploy             |:heavy_check_mark:|`Copy-CamundaDeployment`|
 |Get Resources        |:heavy_check_mark:|`Get-CamundaResource`|
 |Get Resource         |:heavy_check_mark:|`Get-CamundaResource`|
 |Get Resource (Binary)|:heavy_check_mark:|`Get-CamundaResourceBinary`|

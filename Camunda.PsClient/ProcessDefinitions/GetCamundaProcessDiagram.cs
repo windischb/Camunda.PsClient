@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using doob.Camunda.Client;
 using doob.Camunda.Client.ProcessDefinition;
+using HttpFacade;
 
 namespace Camunda.PsClient.ProcessDefinitions
 {
@@ -27,7 +28,7 @@ namespace Camunda.PsClient.ProcessDefinitions
         protected override void ProcessRecord() {
 
 
-            Task<HttpResponseMessage> req = null;
+            Task<ApiResponse<object>> req = null;
 
             if (this.ParameterSetName == "ById") {
                  req = GlobalHelpers.GetCamundaClient(Client).ProcessDefinition.GetProcessDiagramById(Id);
@@ -37,7 +38,7 @@ namespace Camunda.PsClient.ProcessDefinitions
 
             var result = req.GetAwaiter().GetResult();
 
-            WriteObject(result);
+            WriteObject(result.IsSuccessStatusCode);
 
         }
 

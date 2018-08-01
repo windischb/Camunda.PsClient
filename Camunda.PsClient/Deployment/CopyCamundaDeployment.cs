@@ -1,11 +1,12 @@
 ﻿using System.Management.Automation;
 using doob.Camunda.Client;
 using doob.Camunda.Client.Deployment;
+using PSHelper.PowerShellStandard;
 
 namespace Camunda.PsClient.Deployment {
 
     [Cmdlet(VerbsCommon.Copy, "CamundaDeployment")]
-    public class CopyCamundaDeployment : PSCmdlet {
+    public class CopyCamundaDeployment : PSCmdletAsync {
 
         [Parameter(Mandatory = true, ValueFromPipeline = true)]
         public DeploymentObject[] Deployment { get; set; }

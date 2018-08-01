@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Management.Automation;
+using System.Threading.Tasks;
 using doob.Camunda.Client;
 using doob.Camunda.Client.Deployment;
 using doob.Camunda.Client.Global;
 using doob.Reflectensions;
+using PSHelper.PowerShellStandard;
 
 namespace Camunda.PsClient.Deployment {
 
     [Cmdlet(VerbsCommon.Get, "CamundaDeployment")]
-    public class GetCamundaDeployment : PSCmdlet {
+    public class GetCamundaDeployment : PSCmdletAsync {
         [Parameter(Mandatory = false)]
         public string Id { get; set; }
 
@@ -49,18 +51,18 @@ namespace Camunda.PsClient.Deployment {
         public CamundaClient Client { get; set; }
 
 
-        protected override void ProcessRecord() {
+        protected override async Task ProcessRecordAsync() {
 
             var deployment = GlobalHelpers.GetCamundaClient(Client).Deployment;
             var options = GetOptions();
 
             if (Count) {
 
-                var result = deployment.GetListCount(options).GetAwaiter().GetResult();
+                var result = await deployment.GetListCount(options);
                 WriteObject(result);
 
             } else {
-                var result = deployment.GetList(options).GetAwaiter().GetResult();
+                var result = await deployment.GetList(options);
                 WriteObject(result, true);
             }
 

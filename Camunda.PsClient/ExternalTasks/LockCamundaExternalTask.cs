@@ -19,9 +19,6 @@ namespace Camunda.PsClient.ExternalTasks
         [Parameter(Mandatory = false)]
         public SwitchParameter UsePriority { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = "Topics")]
-        public IEnumerable<FetchAndLockTopic> Topics { get; set; }
-
         [Parameter(Mandatory = false, ParameterSetName = "Topic", ValueFromPipelineByPropertyName = true)]
         public string TopicName { get; set; }
 
@@ -33,6 +30,9 @@ namespace Camunda.PsClient.ExternalTasks
 
         [Parameter(Mandatory = false, ParameterSetName = "Topic")]
         public SwitchParameter DeserializeValues { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = "Topics")]
+        public FetchAndLockTopic[] Topics { get; set; }
 
         [Parameter(Mandatory = false)]
         public CamundaClient Client { get; set; }
